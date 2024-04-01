@@ -1,4 +1,4 @@
-Build and tested for EL9 using `shibboleth-3.4.1-1.x86_64` and `httpd-2.4.57-5.el9.x86_64`
+Build and tested for EL9 using `shibboleth-3.4.1-1.x86_64` and `httpd-2.4.57-5.el9.x86_64`.
 
 Requires policycoreutils-devel 
 ```
@@ -36,3 +36,5 @@ To do everything, i.e. build shibd pp module, install it and build rpms:
 ```
 $ sudo sh ./shibd.sh
 ```
+
+It should work on EL8 as well, but it's completely untested and maybe missing some pieces.
