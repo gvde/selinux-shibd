@@ -29,5 +29,10 @@ Currently `shibd_t` is set to permissive for testing!
 To build RPM with shibd.sh:
 ```
 $ sudo dnf -y install rpm-build
-$ sh ./shibd.sh
+$ pwd=$(pwd)
+$ rpmbuild --define "_sourcedir ${pwd}" --define "_specdir ${pwd}" --define "_builddir ${pwd}" --define "_srcrpmdir ${pwd}" --define "_rpmdir ${pwd}" --define "_buildrootdir ${pwd}/.build"  -ba shibd_selinux.spec
+```
+To do everything, i.e. build shibd pp module, install it and build rpms:
+```
+$ sudo sh ./shibd.sh
 ```
