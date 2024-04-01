@@ -15,3 +15,8 @@ Check for AVCs with
 $ sudo ausearch -m avc
 
 Currently shibd_t is set to permissive for testing.
+
+To build RPM with shibd.sh:
+
+$ sudo dnf -y install rpm-build
+$ sh ./shibd.sh
