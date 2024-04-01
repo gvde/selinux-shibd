@@ -1,0 +1,64 @@
+policy_module(shibd, 1.0.0)
+
+gen_require(`
+        type http_port_t;
+	type httpd_t;
+	type kernel_t;
+')
+
+########################################
+#
+# Declarations
+#
+
+type shibd_t;
+type shibd_exec_t;
+init_daemon_domain(shibd_t, shibd_exec_t)
+
+type shibd_cache_t;
+files_type(shibd_cache_t)
+
+type shibd_config_t;
+files_config_file(shibd_config_t)
+
+type shibd_log_t;
+logging_log_file(shibd_log_t)
+
+type shibd_var_run_t;
+files_pid_file(shibd_var_run_t)
+
+permissive shibd_t;
+
+########################################
+#
+# shibd local policy
+#
+allow shibd_t self:capability { setgid setuid };
+allow shibd_t self:process { fork signal_perms };
+allow shibd_t self:fifo_file rw_fifo_file_perms;
+allow shibd_t self:unix_stream_socket create_stream_socket_perms;
+
+domain_use_interactive_fds(shibd_t)
+
+files_read_etc_files(shibd_t)
+
+auth_use_nsswitch(shibd_t)
+
+miscfiles_read_localization(shibd_t)
+
+allow shibd_t http_port_t:tcp_socket name_connect;
+allow shibd_t kernel_t:unix_dgram_socket sendto;
+allow shibd_t self:unix_dgram_socket { create getopt setopt };
+allow shibd_t shibd_cache_t:dir { add_name remove_name search write };
+allow shibd_t shibd_cache_t:file { create getattr open read rename unlink write };
+allow shibd_t shibd_config_t:dir search;
+allow shibd_t shibd_config_t:file { getattr open read };
+allow shibd_t shibd_log_t:dir { add_name remove_name search write };
+allow shibd_t shibd_log_t:file { append create open rename unlink };
+allow shibd_t shibd_var_run_t:dir { add_name remove_name search write };
+allow shibd_t shibd_var_run_t:sock_file { create setattr unlink };
+
+allow httpd_t shibd_config_t:file { getattr open read };
+allow httpd_t shibd_t:unix_stream_socket connectto;
+allow httpd_t shibd_var_run_t:sock_file write;
+
