@@ -24,8 +24,6 @@ $ sudo ausearch -m avc
 ```
 It should show nothing related to `shibd`.
 
-Currently `shibd_t` is set to permissive for testing!
-
 To build RPM with shibd.sh:
 ```
 $ sudo dnf -y install rpm-build
