@@ -27,7 +27,7 @@ logging_log_file(shibd_log_t)
 type shibd_var_run_t;
 files_pid_file(shibd_var_run_t)
 
-permissive shibd_t;
+#permissive shibd_t;
 
 ########################################
 #
