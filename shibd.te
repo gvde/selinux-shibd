@@ -48,7 +48,7 @@ miscfiles_read_localization(shibd_t)
 
 allow shibd_t http_port_t:tcp_socket name_connect;
 allow shibd_t kernel_t:unix_dgram_socket sendto;
-allow shibd_t self:unix_dgram_socket { create getopt setopt };
+allow shibd_t self:unix_dgram_socket { create getopt setopt write };
 allow shibd_t shibd_cache_t:dir { add_name remove_name search write };
 allow shibd_t shibd_cache_t:file { create getattr open read rename unlink write };
 allow shibd_t shibd_config_t:dir search;
