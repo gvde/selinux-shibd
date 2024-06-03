@@ -7,16 +7,13 @@ restorecon -R /usr/sbin/shibd /etc/shibboleth /var/log/shibboleth /var/cache/shi
 %define selinux_policyver 38.1.23-1
 
 Name:   shibd_selinux
-Version:	1.1
+Version:	1.1.1
 Release:	1%{?dist}
 Summary:	SELinux policy module for shibd
 
 Group:	System Environment/Base
 License:	GPLv2+
-# This is an example. You will need to change it.
-# For a complete guide on packaging your policy
-# see https://fedoraproject.org/wiki/SELinux/IndependentPolicy
-URL:		http://HOSTNAME
+URL:		https://github.com/gvde/selinux-shibd
 Source0:	shibd.pp
 Source1:	shibd.if
 Source2:	shibd_selinux.8
