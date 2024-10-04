@@ -7,7 +7,7 @@ restorecon -R /usr/sbin/shibd /etc/shibboleth /var/log/shibboleth /var/cache/shi
 %define selinux_policyver 38.1.23-1
 
 Name:   shibd_selinux
-Version:	1.1.1
+Version:	1.2.0
 Release:	1%{?dist}
 Summary:	SELinux policy module for shibd
 
@@ -64,6 +64,8 @@ exit 0
 
 
 %changelog
-* Mon Apr  1 2024 YOUR NAME <YOUR@EMAILADDRESS> 1.0-1
+* Fri Oct  4 2024 1.2.0-1
+- allow to access discofeed for shibboleth-embedded-ds
+* Mon Apr  1 2024 1.0-1
 - Initial version
 
